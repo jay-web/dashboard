@@ -11,6 +11,12 @@ const generalRoutes = require("./routes/general.js");
 const salesRoutes = require("./routes/sales.js");
 const managementRoutes = require("./routes/management.js");
 
+const Product = require("./models/Product");
+const ProductStat = require("./models/ProductStat");
+
+const {dataProduct, dataProductStat} = require("./data/index");
+
+
 
 
 // ? CONFIGURATION //
@@ -43,6 +49,9 @@ mongoose.connect(process.env.MONGODB_URL, {
     useUnifiedTopology: true
 }).then(() => {
     app.listen(PORT, () => console.log(`Server running at ${PORT}`));
+
+    // Product.insertMany(dataProduct);
+    // ProductStat.insertMany(dataProductStat);
     
 }).catch(() => {
     console.log("Error connecting server")
