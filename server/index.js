@@ -11,6 +11,8 @@ const generalRoutes = require("./routes/general.js");
 const salesRoutes = require("./routes/sales.js");
 const managementRoutes = require("./routes/management.js");
 
+
+
 // ? CONFIGURATION //
 const app = express();
 dotenv.config();
@@ -31,6 +33,8 @@ app.use("sales", salesRoutes);
 app.use("management", managementRoutes);
 
 
+
+
 // ? MONGOOSE SETUP //
 
 const PORT = process.env.PORT || 8001;
@@ -38,7 +42,8 @@ mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
-    app.listen(PORT, () => console.log(`Database Server running at ${PORT}`))
+    app.listen(PORT, () => console.log(`Server running at ${PORT}`));
+    
 }).catch(() => {
     console.log("Error connecting server")
 })
