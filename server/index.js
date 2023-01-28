@@ -11,13 +11,13 @@ const generalRoutes = require("./routes/general.js");
 const salesRoutes = require("./routes/sales.js");
 const managementRoutes = require("./routes/management.js");
 
-const Product = require("./models/Product");
-const ProductStat = require("./models/ProductStat");
+// const Product = require("./models/Product");
+// const ProductStat = require("./models/ProductStat");
 
-const {dataProduct, dataProductStat} = require("./data/index");
+// const {dataProduct, dataProductStat} = require("./data/index");
 
 
-
+// 2:26
 
 // ? CONFIGURATION //
 const app = express();
@@ -50,8 +50,7 @@ mongoose.connect(process.env.MONGODB_URL, {
 }).then(() => {
     app.listen(PORT, () => console.log(`Server running at ${PORT}`));
 
-    // Product.insertMany(dataProduct);
-    // ProductStat.insertMany(dataProductStat);
+    
     
 }).catch(() => {
     console.log("Error connecting server")
