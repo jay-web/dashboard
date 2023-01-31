@@ -2,6 +2,7 @@ const Product = require("../models/Product");
 const ProductStat = require("../models/ProductStat");
 const User = require("../models/User");
 const Transaction = require("../models/Transaction");
+const {getCountryIso3} = require("country-iso-2-to-3");
 
 exports.getProducts = async (req, res) => {
     try{
@@ -75,6 +76,36 @@ exports.getTransactions = async (req, res) => {
             transactions,
             total
         });
+
+    }catch(error){
+        res.status(404).json({ message: error.message})
+    }
+}
+
+exports.getGeography= async (req, res) => {
+    try{
+        const users = await User.find({ role: 'user'}).select("-password");
+
+        const mappedLocations = users.reduce((acc, { country}) => {
+            // ? using package countryISO-2-to-3 because in our database country is saved in 2 character 
+            // ? but out nevo map library required data in 3 character
+
+            let countryISO3 = getCountryIso3(country);     
+            if(!acc[countryISO3]){
+                acc[countryISO3] = 0;
+            } 
+            acc[countryISO3]++;
+            return acc;
+        }, {});
+
+        // ? final format as nevo library required to render on map
+        const formatedLocations = Object.entries(mappedLocations).map(
+            ([country, count]) => {
+                return { id: country, value: count}
+            }
+        )
+
+        res.status(200).json(formatedLocations);
 
     }catch(error){
         res.status(404).json({ message: error.message})
