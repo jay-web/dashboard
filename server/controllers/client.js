@@ -2,7 +2,7 @@ const Product = require("../models/Product");
 const ProductStat = require("../models/ProductStat");
 const User = require("../models/User");
 const Transaction = require("../models/Transaction");
-const {getCountryIso3} = require("country-iso-2-to-3");
+const getCountryISO3 = require("country-iso-2-to-3");
 
 exports.getProducts = async (req, res) => {
     try{
@@ -90,7 +90,7 @@ exports.getGeography= async (req, res) => {
             // ? using package countryISO-2-to-3 because in our database country is saved in 2 character 
             // ? but out nevo map library required data in 3 character
 
-            let countryISO3 = getCountryIso3(country);     
+            let countryISO3 = getCountryISO3(country);     
             if(!acc[countryISO3]){
                 acc[countryISO3] = 0;
             } 
