@@ -14,9 +14,9 @@ const managementRoutes = require("./routes/management.js");
 // const Product = require("./models/Product");
 // const ProductStat = require("./models/ProductStat");
 // const Transaction = require("./models/Transaction");
+// const OverallStat = require("./models/OverallStat");
 
-
-// const {dataProduct, dataProductStat, dataTransaction} = require("./data/index");
+// const {dataProduct, dataProductStat, dataTransaction, dataOverallStat} = require("./data/index");
 
 
 // 3:01
@@ -53,6 +53,7 @@ mongoose.connect(process.env.MONGODB_URL, {
     app.listen(PORT, () => console.log(`Server running at ${PORT}`));
 
     // Transaction.insertMany(dataTransaction);
+    // OverallStat.insertMany(dataOverallStat);
     
     
 }).catch(() => {
