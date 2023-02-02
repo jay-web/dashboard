@@ -12,7 +12,7 @@ const salesRoutes = require("./routes/sales.js");
 const managementRoutes = require("./routes/management.js");
 
 // const Product = require("./models/Product");
-// const ProductStat = require("./models/ProductStat");
+const ProductStat = require("./models/ProductStat");
 // const Transaction = require("./models/Transaction");
 // const OverallStat = require("./models/OverallStat");
 
@@ -37,8 +37,8 @@ app.use(cors());
 // ? ROUTES //
 app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
-app.use("sales", salesRoutes);
-app.use("management", managementRoutes);
+app.use("/sales", salesRoutes);
+app.use("/management", managementRoutes);
 
 
 
@@ -54,6 +54,7 @@ mongoose.connect(process.env.MONGODB_URL, {
 
     // Transaction.insertMany(dataTransaction);
     // OverallStat.insertMany(dataOverallStat);
+    // ProductStat.insertMany(dataProductStat);
     
     
 }).catch(() => {
