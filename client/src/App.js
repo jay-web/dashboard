@@ -9,6 +9,7 @@ import Products from "components/products";
 import Customers from "components/customers";
 import Transactions from "components/transactions";
 import Geography from "components/geography";
+import Overview from "components/overview";
 
 function App() {
   const mode = useSelector((state) => state.global.mode)
@@ -26,6 +27,7 @@ function App() {
               <Route path="/customers" element={ <Customers /> } />
               <Route path="/transactions" element={ <Transactions />} />
               <Route path="/geography" element={ <Geography /> }/>
+              <Route path="/overview" element={ <Overview /> } />
             </Route>
           </Routes>
         </ThemeProvider>
