@@ -1,15 +1,28 @@
-import React from "react";
-import { ResponsiveLine } from "@nivo/line";
-import { useTheme } from "@mui/material";
+import React, { useMemo } from "react";
+import MyResponsiveLine from "components/nevo/lineChart";
+import { Box, useTheme } from "@mui/material";
 import { useGetSalesQuery } from "reduxStore/api";
+import { formatDataForOverview } from "utils/formatData";
 
+const OverviewChart = ({ isDashboard = false, view }) => {
+  const theme = useTheme();
+  const { data, isLoading } = useGetSalesQuery();
 
-const OverviewChart = ({ isDashboard = false, view}) => {
-    const theme = useTheme();
-    const { data, isLoading} = useGetSalesQuery();
-    return (
-        <div>Box</div>
-    )
-}
+  const [totalSalesLine, totalUnitsLine] = useMemo(() => {
+    return formatDataForOverview(data, theme);
+  }, [data]);
+
+  if (!data || isLoading) return <>...Loading</>;
+
+  return (
+    <Box height="75vh">
+      <MyResponsiveLine
+        data={view === "sales" ? totalSalesLine : totalUnitsLine}
+        dashboard={isDashboard}
+        view={view}
+      />
+    </Box>
+  );
+};
 
 export default OverviewChart;
