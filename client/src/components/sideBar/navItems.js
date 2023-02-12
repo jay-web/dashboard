@@ -34,7 +34,7 @@ const navItems = [
         icon: <MatIcons.PointOfSaleOutlined />
     },
     {
-        text: 'Today',
+        text: 'Daily',
         icon: <MatIcons.TodayOutlined />
     },
     {

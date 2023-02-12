@@ -39,3 +39,48 @@ export const formatDataForOverview = (data, theme) => {
 
     return [[totalSalesLine], [totalUnitsLine]];
 }
+
+export const formatDataForDailyOverview = (data, theme, startDate, endDate) => {
+
+    if(!data) return [];
+
+    const {dailyData } = data;   
+
+    // ? Format data as per @nevo/line chart requirement 
+    const totalSalesLine = {
+        id: "totalSales",
+        color: theme.palette.secondary.main,
+        data: []
+    }
+     // ? Format data as per @nevo/line chart requirement 
+    const totalUnitsLine = {
+        id: "totalUnits",
+        color: theme.palette.secondary[600],
+        data: [],
+    }
+
+    // ? Iterate and add up the sales and units with previous months
+    Object.values(dailyData).forEach(({ date, totalSales, totalUnits }) => {
+        const formattedDate = new Date(date);
+        if(formattedDate >= startDate && formattedDate <= endDate) {
+            const splitDate = date.substring(date.indexOf("-") + 1);
+
+            totalSalesLine.data = [
+                ...totalSalesLine.data,
+                {x : splitDate, y: totalSales }
+            ];
+    
+            totalUnitsLine.data = [
+                ...totalUnitsLine.data,
+                { x: splitDate, y: totalUnits }
+            ]
+        }
+
+        
+
+    });
+
+    const formattedData = [totalSalesLine, totalUnitsLine]
+    return [formattedData];
+
+}

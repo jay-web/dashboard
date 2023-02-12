@@ -3,7 +3,7 @@ import { useTheme } from '@mui/material';
 import { ResponsiveLine } from '@nivo/line';
 
 
-const MyResponsiveLine = ({ data, isDashboard, view }) => {
+const MyResponsiveLine = ({ data, isDashboard, view, type="overview" }) => {
     const theme = useTheme();
 
     return <ResponsiveLine
@@ -55,10 +55,10 @@ const MyResponsiveLine = ({ data, isDashboard, view }) => {
         axisTop={null}
         axisRight={null}
         axisBottom={{
-            format: (v) => {
+            format: type = "overview" ? (v) => {
                 if(isDashboard) return v.slice(0, 3)
                 return v;
-            },
+            } : () => {},
             orient: 'bottom',
             tickSize: 5,
             tickPadding: 5,
@@ -83,7 +83,7 @@ const MyResponsiveLine = ({ data, isDashboard, view }) => {
         pointLabelYOffset={-12}
         useMesh={true}
         legends={
-            !isDashboard ? [
+           (type == "overview" &&  !isDashboard) || type !== "overview" ? [
             {
                 anchor: 'bottom-right',
                 direction: 'column',
@@ -108,7 +108,7 @@ const MyResponsiveLine = ({ data, isDashboard, view }) => {
                     }
                 ]
             }
-        ]: undefined }
+        ] : undefined }
     />
     }
 
