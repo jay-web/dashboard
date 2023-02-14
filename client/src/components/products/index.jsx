@@ -32,7 +32,7 @@ const Products = () => {
           )}
         </Box>
       ) : (
-        <Box></Box>
+        <Box>Loading...</Box>
       )}
     </Box>
   );

@@ -3,7 +3,7 @@ import { useTheme } from '@mui/material';
 import { ResponsiveLine } from '@nivo/line';
 
 
-const MyResponsiveLine = ({ data, isDashboard, view, type="overview" }) => {
+const MyResponsiveLine = ({ data, isDashboard, view, type="overview", calender="" }) => {
     const theme = useTheme();
 
     return <ResponsiveLine
@@ -51,7 +51,7 @@ const MyResponsiveLine = ({ data, isDashboard, view, type="overview" }) => {
             reverse: false
         }}
         yFormat=" >-.2f"
-        curve='catmullRom'
+        curve={calender == "monthly" ? undefined : 'catmullRom'}
         axisTop={null}
         axisRight={null}
         axisBottom={{
@@ -85,11 +85,11 @@ const MyResponsiveLine = ({ data, isDashboard, view, type="overview" }) => {
         legends={
            (type == "overview" &&  !isDashboard) || type !== "overview" ? [
             {
-                anchor: 'bottom-right',
+                anchor: 'top-right',
                 direction: 'column',
                 justify: false,
                 translateX: 30,
-                translateY: -40,
+                translateY: -20,
                 itemsSpacing: 0,
                 itemDirection: 'left-to-right',
                 itemWidth: 80,
