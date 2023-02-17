@@ -19,7 +19,7 @@ const ProductStat = require("./models/ProductStat");
 // const {dataProduct, dataProductStat, dataTransaction, dataOverallStat} = require("./data/index");
 
 
-// 5:22
+// 536
 
 // ? CONFIGURATION //
 const app = express();
