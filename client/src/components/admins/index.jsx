@@ -1,15 +1,11 @@
-import { useTheme } from "@emotion/react";
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import Header from "components/header";
 import React from "react";
-import { useGetCustomersQuery } from "reduxStore/api";
+import { useGetAdminsQuery } from "reduxStore/api";
 
-
-const Customers = () => {
-    const { data, isLoading } = useGetCustomersQuery();
-    const theme = useTheme();
-    
+const Admins = () => {
+    const {data, isLoading } = useGetAdminsQuery();
     const columns = [
         {
             field: "_id",
@@ -51,7 +47,7 @@ const Customers = () => {
         }
     ]
     return (<Box margin="1.5rem 2.5rem">
-        <Header title="CUSTOMERS" subtitle="List of Customers" />
+        <Header title="ADMINS" subtitle="List of Admins" />
         <Box mt="40px" height="75vh"> 
             <DataGrid 
                 loading={isLoading || !data}
@@ -63,4 +59,4 @@ const Customers = () => {
     </Box>)
 }
 
-export default Customers;
+export default Admins;
