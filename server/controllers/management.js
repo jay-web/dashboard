@@ -23,7 +23,7 @@ exports.getUserPerformance = async (req, res) => {
             { $match: { _id: new mongoose.Types.ObjectId(id)}},
             { $lookup: {
                 from: 'affiliatestats' ,     // ? table name
-                localField: "id",
+                localField: "_id",
                 foreignField: "userId",
                 as: "affiliateStats"
                 }
