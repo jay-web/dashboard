@@ -15,11 +15,12 @@ const managementRoutes = require("./routes/management.js");
 const ProductStat = require("./models/ProductStat");
 // const Transaction = require("./models/Transaction");
 // const OverallStat = require("./models/OverallStat");
+// const AffiliateStat = require("./models/AffiliateStat");
 
-// const {dataProduct, dataProductStat, dataTransaction, dataOverallStat} = require("./data/index");
+// const {dataProduct, dataProductStat, dataTransaction, dataOverallStat, dataAffiliateStat} = require("./data/index");
 
 
-// 536
+// 548
 
 // ? CONFIGURATION //
 const app = express();
@@ -55,6 +56,7 @@ mongoose.connect(process.env.MONGODB_URL, {
     // Transaction.insertMany(dataTransaction);
     // OverallStat.insertMany(dataOverallStat);
     // ProductStat.insertMany(dataProductStat);
+    // AffiliateStat.insertMany(dataAffiliateStat);
     
     
 }).catch(() => {
