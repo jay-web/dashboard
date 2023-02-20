@@ -15,13 +15,13 @@ const OverviewChart = ({ isDashboard = false, view }) => {
   if (!data || isLoading) return <>...Loading</>;
 
   return (
-    <Box height="75vh">
+   
       <MyResponsiveLine
         data={view === "sales" ? totalSalesLine : totalUnitsLine}
         dashboard={isDashboard}
         view={view}
       />
-    </Box>
+    
   );
 };
 
