@@ -1,5 +1,6 @@
 import { DownloadOutlined, Email, PersonAdd, PointOfSale, Traffic } from "@mui/icons-material";
-import { Box, Button, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
 import FlexBetween from "components/flexBetween";
 import Header from "components/header";
 import StatBox from "components/statBox";
@@ -130,6 +131,47 @@ const Dashboard = () => {
           }
         />
         {/* End of row one */}
+        {/* Start of row two */}
+        
+        {/* ROW 2 */}
+        <Box
+          gridColumn="span 8"
+          gridRow="span 3"
+          sx={{
+            "& .MuiDataGrid-root": {
+              border: "none",
+              borderRadius: "5rem",
+            },
+            "& .MuiDataGrid-cell": {
+              borderBottom: "none",
+            },
+            "& .MuiDataGrid-columnHeaders": {
+              backgroundColor: theme.palette.background.alt,
+              color: theme.palette.secondary[100],
+              borderBottom: "none",
+            },
+            "& .MuiDataGrid-virtualScroller": {
+              backgroundColor: theme.palette.background.alt,
+            },
+            "& .MuiDataGrid-footerContainer": {
+              backgroundColor: theme.palette.background.alt,
+              color: theme.palette.secondary[100],
+              borderTop: "none",
+            },
+            "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+              color: `${theme.palette.secondary[200]} !important`,
+            },
+          }}
+        >
+          <Typography variant="h4" sx={{ marginBottom: "1rem"}}>Transactions</Typography>
+          <DataGrid
+            loading={isLoading || !data}
+            getRowId={(row) => row._id}
+            rows={(data && data.transactions) || []}
+            columns={columns}
+          />
+        </Box>
+        {/* End of row two */}
       </Box>
     </Box>
   );

@@ -54,6 +54,7 @@ const MyResponsiveLine = ({ data, isDashboard, view, type="overview", calender="
         curve={calender == "monthly" ? undefined : 'catmullRom'}
         axisTop={null}
         axisRight={null}
+        enableArea={isDashboard}
         axisBottom={{
             format: type = "overview" ? (v) => {
                 if(isDashboard) return v.slice(0, 3)
