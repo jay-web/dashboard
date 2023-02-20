@@ -3,6 +3,7 @@ import { Box, Button, Typography, useMediaQuery, useTheme } from "@mui/material"
 import { DataGrid } from "@mui/x-data-grid";
 import FlexBetween from "components/flexBetween";
 import Header from "components/header";
+import BreakdownChart from "components/nevo/breakdownChart";
 import StatBox from "components/statBox";
 import React from "react";
 import { useGetDashboardStatsQuery } from "reduxStore/api";
@@ -46,10 +47,10 @@ const Dashboard = () => {
   ];
 
   return (
-    <Box margin="1.5rem 2.5rem">
+    <Box margin="1.5rem 2.5rem" >
       <FlexBetween>
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
-        <Box>
+        {/* <Box>
           <Button
             sx={{
               backgroundColor: theme.palette.secondary.light,
@@ -62,7 +63,7 @@ const Dashboard = () => {
             <DownloadOutlined sx={{ mr: "10px" }} />
             Download Reports
           </Button>
-        </Box>
+        </Box> */}
       </FlexBetween>
 
       {/* Main Grid Section  */}
@@ -163,13 +164,27 @@ const Dashboard = () => {
             },
           }}
         >
-          <Typography variant="h4" sx={{ marginBottom: "1rem"}}>Transactions</Typography>
+          {/* <Typography variant="h6" sx={{ marginBottom: "1rem"}}>Transactions</Typography> */}
           <DataGrid
             loading={isLoading || !data}
             getRowId={(row) => row._id}
             rows={(data && data.transactions) || []}
             columns={columns}
+            
           />
+        </Box>
+        <Box
+          gridColumn="span 4"
+          gridRow="span 3"
+          backgroundColor={theme.palette.background.alt}
+          p="1.5rem"
+          borderRadius="0.55rem"
+        >
+          <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
+            Sales By Category
+          </Typography>
+          <BreakdownChart isDashboard={true} />
+          
         </Box>
         {/* End of row two */}
       </Box>
