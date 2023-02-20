@@ -34,7 +34,7 @@ const Navbar = ({
             <IconButton onClick={() => setIsSideBarOpen(!isSideBarOpen)}>
                 <MenuIcon />
             </IconButton>
-            <FlexBetween 
+            {/* <FlexBetween 
                 backgroundcolor={theme.palette.background.alt}
                 borderRadius="9px"
                 gap="3rem"
@@ -44,7 +44,7 @@ const Navbar = ({
                 <IconButton>
                     <Search />
                 </IconButton>
-            </FlexBetween>
+            </FlexBetween> */}
         </FlexBetween>
         {/* Right Side */}
         <FlexBetween gap="1.5rem">
