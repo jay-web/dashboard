@@ -47,6 +47,7 @@ app.use("/management", managementRoutes);
 // ? MONGOOSE SETUP //
 
 const PORT = process.env.PORT || 8001;
+mongoose.set('strictQuery', false);
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
